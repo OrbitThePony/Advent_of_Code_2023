@@ -1,7 +1,7 @@
 from pathlib import Path
 from time import perf_counter_ns
 
-INPUT_NAME = "day02.txt"
+INPUT_NAME = "input2.txt"
 INPUT_PATH = Path(__file__).parent.parent.parent / "input" / INPUT_NAME
 
 parsed_input = None
@@ -14,7 +14,9 @@ if INPUT_PATH.exists():
         parsed_input = tuple(parse_line(line) for line in input_file)
 
 def solution_one(parsed_input:tuple) -> str:
-    return ""
+    print(INPUT_PATH)
+    print(parsed_input)
+    return "Solution One"
 
 def solution_two(parsed_input:tuple) -> str:
     return ""
