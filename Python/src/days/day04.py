@@ -1,21 +1,38 @@
+import re
 from pathlib import Path
 from time import perf_counter_ns
 
-INPUT_NAME = "day04.txt"
+INPUT_NAME = "input4.txt"
 INPUT_PATH = Path(__file__).parent.parent.parent / "input" / INPUT_NAME
 
 def parse_line(line:str):
     return line
 
 def parse_input(file_path = INPUT_PATH):
-    parsed_input = list()
-    if file_path.exists():
-        with open(file_path) as input_file:
-            parsed_input = tuple(parse_line(line) for line in input_file)
-    return tuple(parsed_input)
+    parsed_input = open(file_path)
+    return parsed_input
 
 def solution_one(parsed_input:tuple) -> str:
-    return ""
+    points = 0
+    for line in parsed_input:
+        print(type(line))
+        line = line.split(":")[1].strip()
+        print(line)
+        string_one, string_two = line.split("|")[0], line.split("|")[1]
+        numbers_one = re.findall(r"\d+", string_one)
+        numbers_two = re.findall(r"\d+", string_two)
+        print(string_one)
+        print(numbers_one)
+        numbers = 0
+        for number in numbers_two:
+            if number in numbers_one:
+                print(number)
+                numbers += 1
+        points += 2**(numbers-1) if numbers > 0 else 0
+        print(numbers)
+        print(2**(numbers-1) if numbers > 0 else 0)
+
+    return points
 
 def solution_two(parsed_input:tuple) -> str:
     return ""
